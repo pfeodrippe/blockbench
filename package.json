@@ -40,7 +40,8 @@
 		"files": [
 			"assets/",
 			"build/",
-			"css/",
+		  "css/",
+                  "dist/",
 			"js/",
 			"lib/",
 			"font/",
@@ -112,6 +113,7 @@
 		"electron": "^26.6.9",
 		"electron-builder": "^23.6.0",
 		"electron-notarize": "^1.0.0",
+		"shadow-cljs": "^2.27.5",
 		"webpack": "^5.74.0",
 		"webpack-cli": "^4.5.0",
 		"workbox-build": "^6.5.3"

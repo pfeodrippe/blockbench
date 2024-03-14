@@ -1,4 +1,6 @@
 //Import
+
+aa = require('./dist/index.js');
 function setupDragHandlers() {
 	Blockbench.addDragHandler(
 		'texture',
@@ -55,7 +57,7 @@ function setupDragHandlers() {
 }
 
 function loadModelFile(file) {
-	
+
 	let existing_tab = isApp && ModelProject.all.find(project => (
 		project.save_path == file.path || project.export_path == file.path
 	))
@@ -154,7 +156,7 @@ async function loadImages(files, event) {
 		} else if (method == 'replace_texture') {
 			replace_texture.fromFile(files[0])
 			updateSelection();
-			
+
 		} else if (method == 'layer') {
 			let texture = Texture.getDefault();
 			let frame = new CanvasFrame(img);
@@ -176,9 +178,9 @@ async function loadImages(files, event) {
 			updateInterfacePanels();
 			BARS.updateConditions();
 			BarItems.move_layer_tool.select();
-			
+
 		} else if (method == 'reference_image') {
-			
+
 			files.map(file => {
 				return new ReferenceImage({
 					source: file.content,
@@ -186,10 +188,10 @@ async function loadImages(files, event) {
 				}).addAsReference(true);
 			}).last().select();
 			ReferenceImageMode.activate();
-			
+
 		} else if (method == 'edit') {
 			Codecs.image.load(files, files[0].path, [img.naturalWidth, img.naturalHeight]);
-			
+
 		} else if (method == 'minecraft_skin') {
 			Formats.skin.setup_dialog.show();
 			Formats.skin.setup_dialog.setFormValues({
@@ -619,7 +621,8 @@ BARS.defineActions(function() {
 		icon: 'file_open',
 		category: 'file',
 		keybind: new Keybind({key: 'o', ctrl: true}),
-		click: function () {
+	    click: function () {
+                console.log(aa.lib());
 			var startpath;
 			if (isApp && recent_projects && recent_projects.length) {
 				let first_recent_project = recent_projects.find(p => !p.favorite) || recent_projects[0];
@@ -723,7 +726,7 @@ BARS.defineActions(function() {
 								if (codec == 'both') {
 									Codecs.project.export();
 									export_codec.export();
-	
+
 								} else if (codec) {
 									Codecs[codec].export();
 								}
@@ -760,7 +763,7 @@ BARS.defineActions(function() {
 						},
 						buttons: ['dialog.cancel']
 					}, resolve));
-					
+
 					if (codec == 'both') {
 						Codecs.project.export();
 						export_codec.export();

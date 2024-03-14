@@ -1,0 +1,7 @@
+;; shadow-cljs configuration
+{:source-paths ["src-clj"]
+
+ :builds
+ {:lib {:target :node-library
+        :output-to "dist/index.js"
+        :exports {:lib main/main}}}}
